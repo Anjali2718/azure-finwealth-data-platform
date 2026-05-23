@@ -1,0 +1,15 @@
+{
+	"name": "adf-finwealth-dev",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Enabled",
+			"editable": true
+		}
+	},
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "b5ccd71a-4d15-472b-be80-2cd0f4f7e100",
+		"tenantId": "d1b99a31-59dc-4039-b9c4-f6166b6bf0a4"
+	}
+}

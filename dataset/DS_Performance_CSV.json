@@ -1,0 +1,53 @@
+{
+	"name": "DS_Performance_CSV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ADLS_FinWealth",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Performance.csv",
+				"fileSystem": "bronze"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "AccountID",
+				"type": "String"
+			},
+			{
+				"name": "MonthStart",
+				"type": "String"
+			},
+			{
+				"name": "ReturnPct",
+				"type": "String"
+			},
+			{
+				"name": "BenchmarkCode",
+				"type": "String"
+			},
+			{
+				"name": "BenchmarkReturnPct",
+				"type": "String"
+			},
+			{
+				"name": "ExcessReturnPct",
+				"type": "String"
+			},
+			{
+				"name": "CumulativeReturnPct",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

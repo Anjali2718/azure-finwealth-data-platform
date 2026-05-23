@@ -1,0 +1,51 @@
+{
+	"name": "DS_STG_Holdings",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SQL_FinWealth",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "HoldingID",
+				"type": "varchar"
+			},
+			{
+				"name": "AccountID",
+				"type": "varchar"
+			},
+			{
+				"name": "SecurityID",
+				"type": "varchar"
+			},
+			{
+				"name": "HoldingDate",
+				"type": "date"
+			},
+			{
+				"name": "Quantity",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 4
+			},
+			{
+				"name": "MarketValue",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 4
+			},
+			{
+				"name": "LoadDate",
+				"type": "datetime2",
+				"scale": 7
+			}
+		],
+		"typeProperties": {
+			"schema": "stg",
+			"table": "Holdings"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

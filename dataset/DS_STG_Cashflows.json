@@ -1,0 +1,49 @@
+{
+	"name": "DS_STG_Cashflows",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SQL_FinWealth",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "CashflowID",
+				"type": "varchar"
+			},
+			{
+				"name": "AccountID",
+				"type": "varchar"
+			},
+			{
+				"name": "FlowDate",
+				"type": "date"
+			},
+			{
+				"name": "FlowType",
+				"type": "varchar"
+			},
+			{
+				"name": "Amount",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 4
+			},
+			{
+				"name": "Currency",
+				"type": "varchar"
+			},
+			{
+				"name": "LoadDate",
+				"type": "datetime2",
+				"scale": 7
+			}
+		],
+		"typeProperties": {
+			"schema": "stg",
+			"table": "Cashflows"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

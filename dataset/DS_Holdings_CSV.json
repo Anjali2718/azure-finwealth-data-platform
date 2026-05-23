@@ -1,0 +1,45 @@
+{
+	"name": "DS_Holdings_CSV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ADLS_FinWealth",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Holdings.csv",
+				"fileSystem": "bronze"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "AccountID",
+				"type": "String"
+			},
+			{
+				"name": "SecurityID",
+				"type": "String"
+			},
+			{
+				"name": "Quantity",
+				"type": "String"
+			},
+			{
+				"name": "ValuationDate",
+				"type": "String"
+			},
+			{
+				"name": "MarketValue",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

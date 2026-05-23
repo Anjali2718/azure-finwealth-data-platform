@@ -1,0 +1,51 @@
+{
+	"name": "DS_STG_Clients",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SQL_FinWealth",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ClientID",
+				"type": "varchar"
+			},
+			{
+				"name": "ClientName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Segment",
+				"type": "varchar"
+			},
+			{
+				"name": "RiskProfile",
+				"type": "varchar"
+			},
+			{
+				"name": "PrimaryAdvisorID",
+				"type": "varchar"
+			},
+			{
+				"name": "ClientSince",
+				"type": "date"
+			},
+			{
+				"name": "Country",
+				"type": "varchar"
+			},
+			{
+				"name": "LoadDate",
+				"type": "datetime2",
+				"scale": 7
+			}
+		],
+		"typeProperties": {
+			"schema": "stg",
+			"table": "Clients"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

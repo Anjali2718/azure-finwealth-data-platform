@@ -1,0 +1,156 @@
+{
+	"name": "PL_Copy_Trades_Bronze_To_Stg",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_Trades_To_Stg",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE stg.Trades;",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "TradeID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TradeID",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "AccountID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "AccountID",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "SecurityID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "SecurityID",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TradeDate",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TradeDate",
+									"type": "Date",
+									"physicalType": "date"
+								}
+							},
+							{
+								"source": {
+									"name": "Quantity",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Quantity",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 4,
+									"precision": 18
+								}
+							},
+							{
+								"source": {
+									"name": "Price",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Price",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 4,
+									"precision": 18
+								}
+							},
+							{
+								"source": {
+									"name": "Amount",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TradeAmount",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 4,
+									"precision": 18
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_Trades_CSV",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_STG_Trades",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2026-05-22T11:21:10Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,246 @@
+{
+	"name": "PL_Master_Load_DWH",
+	"properties": {
+		"activities": [
+			{
+				"name": "SP_Load_DimClient",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dwh].[usp_Load_DimClient]"
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_SQL_FinWealth",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "SP_Load_DimAdvisor",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "SP_Load_DimClient",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dwh].[usp_Load_DimAdvisor]"
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_SQL_FinWealth",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "SP_Load_DimAccount",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "SP_Load_DimAdvisor",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dwh].[usp_Load_DimAccount]"
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_SQL_FinWealth",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "SP_Load_DimSecurity",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "SP_Load_DimAccount",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dwh].[usp_Load_DimSecurity]"
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_SQL_FinWealth",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "SP_Load_FactTrades",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "SP_Load_DimSecurity",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dwh].[usp_Load_Fact_Trades]"
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_SQL_FinWealth",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "SP_Load_FactHoldings",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "SP_Load_FactTrades",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dwh].[usp_Load_Fact_Holdings]"
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_SQL_FinWealth",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "SP_Load_FactFees",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "SP_Load_FactHoldings",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dwh].[usp_Load_Fact_Fees]"
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_SQL_FinWealth",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "SP_Load_FactCashflows",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "SP_Load_FactFees",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dwh].[usp_Load_Fact_Cashflows]"
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_SQL_FinWealth",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "SP_Load_FactPerformance",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "SP_Load_FactCashflows",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dwh].[usp_Load_Fact_Performance]"
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_SQL_FinWealth",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2026-05-23T05:15:24Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

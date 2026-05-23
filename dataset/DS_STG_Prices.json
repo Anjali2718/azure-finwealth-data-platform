@@ -1,0 +1,45 @@
+{
+	"name": "DS_STG_Prices",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SQL_FinWealth",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "PriceID",
+				"type": "varchar"
+			},
+			{
+				"name": "SecurityID",
+				"type": "varchar"
+			},
+			{
+				"name": "PriceDate",
+				"type": "date"
+			},
+			{
+				"name": "ClosePrice",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 4
+			},
+			{
+				"name": "Currency",
+				"type": "varchar"
+			},
+			{
+				"name": "LoadDate",
+				"type": "datetime2",
+				"scale": 7
+			}
+		],
+		"typeProperties": {
+			"schema": "stg",
+			"table": "Prices"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

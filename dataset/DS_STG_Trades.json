@@ -1,0 +1,65 @@
+{
+	"name": "DS_STG_Trades",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SQL_FinWealth",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "TradeID",
+				"type": "varchar"
+			},
+			{
+				"name": "AccountID",
+				"type": "varchar"
+			},
+			{
+				"name": "SecurityID",
+				"type": "varchar"
+			},
+			{
+				"name": "TradeDate",
+				"type": "date"
+			},
+			{
+				"name": "TradeType",
+				"type": "varchar"
+			},
+			{
+				"name": "Quantity",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 4
+			},
+			{
+				"name": "Price",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 4
+			},
+			{
+				"name": "TradeAmount",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 4
+			},
+			{
+				"name": "Broker",
+				"type": "varchar"
+			},
+			{
+				"name": "LoadDate",
+				"type": "datetime2",
+				"scale": 7
+			}
+		],
+		"typeProperties": {
+			"schema": "stg",
+			"table": "Trades"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

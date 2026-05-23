@@ -1,0 +1,45 @@
+{
+	"name": "DS_STG_Benchmarks",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SQL_FinWealth",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "BenchmarkCode",
+				"type": "varchar"
+			},
+			{
+				"name": "Description",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Currency",
+				"type": "varchar"
+			},
+			{
+				"name": "IndexValueDate",
+				"type": "date"
+			},
+			{
+				"name": "IndexValue",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 4
+			},
+			{
+				"name": "LoadDate",
+				"type": "datetime2",
+				"scale": 7
+			}
+		],
+		"typeProperties": {
+			"schema": "stg",
+			"table": "Benchmarks"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

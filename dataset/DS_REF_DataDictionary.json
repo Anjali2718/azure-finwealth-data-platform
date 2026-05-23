@@ -1,0 +1,35 @@
+{
+	"name": "DS_REF_DataDictionary",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SQL_FinWealth",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "FileName",
+				"type": "varchar"
+			},
+			{
+				"name": "ColumnName",
+				"type": "varchar"
+			},
+			{
+				"name": "Description",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LoadDate",
+				"type": "datetime2",
+				"scale": 7
+			}
+		],
+		"typeProperties": {
+			"schema": "ref",
+			"table": "Data_Dictionary"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,51 @@
+{
+	"name": "DS_STG_Performance",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SQL_FinWealth",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "PerformanceID",
+				"type": "varchar"
+			},
+			{
+				"name": "AccountID",
+				"type": "varchar"
+			},
+			{
+				"name": "BenchmarkCode",
+				"type": "varchar"
+			},
+			{
+				"name": "PerformanceDate",
+				"type": "date"
+			},
+			{
+				"name": "ReturnPct",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 4
+			},
+			{
+				"name": "BenchmarkReturn",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 4
+			},
+			{
+				"name": "LoadDate",
+				"type": "datetime2",
+				"scale": 7
+			}
+		],
+		"typeProperties": {
+			"schema": "stg",
+			"table": "Performance"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,49 @@
+{
+	"name": "DS_STG_Fees",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SQL_FinWealth",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "FeeID",
+				"type": "varchar"
+			},
+			{
+				"name": "AccountID",
+				"type": "varchar"
+			},
+			{
+				"name": "FeeDate",
+				"type": "date"
+			},
+			{
+				"name": "FeeType",
+				"type": "varchar"
+			},
+			{
+				"name": "FeeAmount",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 4
+			},
+			{
+				"name": "Currency",
+				"type": "varchar"
+			},
+			{
+				"name": "LoadDate",
+				"type": "datetime2",
+				"scale": 7
+			}
+		],
+		"typeProperties": {
+			"schema": "stg",
+			"table": "Fees"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
