@@ -41,9 +41,7 @@ FROM dwh.Fact_Cashflows;
 GO
 
 
--- =====================================================
 -- NULL Checks
--- =====================================================
 
 SELECT *
 FROM dwh.DimClient
@@ -93,9 +91,7 @@ WHERE AccountKey IS NULL;
 GO
 
 
--- =====================================================
 -- Duplicate Checks
--- =====================================================
 
 SELECT
     ClientID,
@@ -130,9 +126,7 @@ HAVING COUNT(*) > 1;
 GO
 
 
--- =====================================================
 -- Referential Integrity Checks
--- =====================================================
 
 SELECT *
 FROM dwh.Fact_Holdings
@@ -162,9 +156,7 @@ WHERE AccountKey NOT IN
 GO
 
 
--- =====================================================
 -- Business Rule Checks
--- =====================================================
 
 SELECT *
 FROM dwh.Fact_Holdings
@@ -187,9 +179,7 @@ WHERE CashflowAmount < 0;
 GO
 
 
--- =====================================================
 -- Final Warehouse Validation
--- =====================================================
 
 SELECT TOP 10 *
 FROM dwh.DimClient;
